@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public Vector2 speed;
+#region private
+
+    [Header("Movement")]
+
+    [SerializeField]
+    private Vector2 speed;
+
+    [SerializeField]
+    public Vector2 resetPosition;
+
 
     private Rigidbody2D rig;
 
-    public Vector2 resetPosition;
+#endregion
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +31,21 @@ public class BallController : MonoBehaviour
     void Update()
     {
         //rig.velocity = speed;
-        
-
         //GetComponent<Transform>();
         //Vector3 pos = transform.position;
         //Transform.position = transform.position + (new Vector3(0.1f, 0, 0) * Time.deltaTime);
-      // transform.Translate (speed * Time.deltaTime);
+        // transform.Translate (speed * Time.deltaTime);
     }
 
+    //Reset Ball
     public void ResetBall()
     {
         transform.position = new Vector3(resetPosition.x, resetPosition.y, 2);
+    }
+
+    //Movement Rigidbody
+    public void ActivatePUSpeedUp(float magnitude)
+    {
+        rig.velocity *= magnitude;
     }
 }
