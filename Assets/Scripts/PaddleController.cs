@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour
 {
-    public int speed;
+    #region Private
+    [Header("Paddle Settings")]
 
-    public KeyCode upKey;
-    public KeyCode downKey;
+    [SerializeField]
+    private int speed;
+
+    [SerializeField]
+    private KeyCode upKey;
+
+    [SerializeField]
+    private KeyCode downKey;
 
     private Rigidbody2D rig;
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +50,7 @@ public class PaddleController : MonoBehaviour
 
     private void MoveObject(Vector2 movement)
     {
-        Debug.Log("Test :" + movement);
+        //Debug.Log("Test :" + movement);
         rig.velocity = movement;
     }
 
