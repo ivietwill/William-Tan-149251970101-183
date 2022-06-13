@@ -839,7 +839,7 @@ MonoBehaviour:
   spawnInterval: 5
   powerUpTemplateList:
   - {fileID: 1437474697}
-  powerUpAreaMin: {x: -4, y: 3}
+  powerUpAreaMin: {x: -4, y: -3}
   powerUpAreaMax: {x: 4, y: 3}
 --- !u!1 &1437474697 stripped
 GameObject:
