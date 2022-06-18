@@ -10,6 +10,21 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void quit()
+    {
+        Application.Quit();
+    }
+
     public void OpenAuthor()
     {
         Debug.Log("William Tan - 149251970101-183");
