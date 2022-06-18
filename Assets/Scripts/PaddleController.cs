@@ -8,22 +8,37 @@ public class PaddleController : MonoBehaviour
     [Header("Paddle Settings")]
 
     [SerializeField]
-    private int speed;
-
-    [SerializeField]
     private KeyCode upKey;
 
     [SerializeField]
     private KeyCode downKey;
 
+    [SerializeField]
+    private Vector3 vector;
+
+    [SerializeField]
+    private float timesUp;
+
+    [SerializeField]
+    private int scale = 4;
+
+    [SerializeField]
+    private int speed;
+
+    [SerializeField]
+    private int TimesSpeed = 2 ;
+
+
     private Rigidbody2D rig;
+
+    
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
         rig = GetComponent<Rigidbody2D>();
 
     }
@@ -53,5 +68,34 @@ public class PaddleController : MonoBehaviour
         //Debug.Log("Test :" + movement);
         rig.velocity = movement;
     }
+
+    //Adding Scale Up for Paddle, Collide with Ball
+    public void ActivatePUScaleUp()
+    {
+        this.gameObject.transform.localScale += new Vector3(0,scale, 0);
+        StartCoroutine(NormalScale());
+    }
+
+    public void ActivatePUHandleUp()
+    {
+        speed = TimesSpeed * speed;
+        StartCoroutine(NormalSpeed());
+    }
+
+    IEnumerator NormalScale()
+    {
+        //Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        yield return new WaitForSeconds(timesUp);
+        Debug.Log("Test");
+        this.gameObject.transform.localScale -= new Vector3(0, scale, 0);
+    }
+
+    IEnumerator NormalSpeed()
+    {
+        yield return new WaitForSeconds(timesUp);
+        Debug.Log("Speed Abis");
+        speed = speed / TimesSpeed;
+    }
+
 
 }
